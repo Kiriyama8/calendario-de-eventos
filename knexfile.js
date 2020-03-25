@@ -7,7 +7,7 @@ module.exports = {
     connection: {
       database: 'rocketseat',
       user:     'root',
-      password: '132551'
+      password: 'password'
     },
     pool: {
       min: 2,
