@@ -1,7 +1,6 @@
 const express = require('express');
 
-const crypto = require('crypto');
-const database = require('./database/database');
+const UserService = require('./services/UserService');
 
 const routes = express.Router();
 
@@ -13,12 +12,7 @@ routes.get('/', (request, response) => {
 });
 
 routes.post('/create', async (request, response) => {
-    const { nome, email } = request.body;
-    const id = crypto.randomBytes(6).toString('HEX');
-
-    await database('users').insert({ id, nome, email });
-
-    return response.json({ id });
+    UserService.create(request, response);
 });
 
 module.exports = routes;
